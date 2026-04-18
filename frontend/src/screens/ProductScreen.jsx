@@ -11,7 +11,7 @@ import {
   Button,
   Form,
 } from 'react-bootstrap';
-import { toast } from 'react-toastify';
+
 import { useGetProductDetailsQuery } from '../slices/productsApiSlice';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
@@ -37,7 +37,6 @@ const ProductScreen = () => {
     navigate('/cart');
   };
 
-  const { userInfo } = useSelector((state) => state.auth);
 
   return (
     <>
