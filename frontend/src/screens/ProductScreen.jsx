@@ -1,7 +1,7 @@
 import { formatCurrency } from '../utils/cartUtils';
 import { useState } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import {
   Row,
   Col,
