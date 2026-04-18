@@ -1,6 +1,6 @@
 # Mini E-Commerce Application
 
-A professional, streamlined MERN stack e-commerce application designed for academic submission. This project is a refined version of the ProShop repository, focused on core functionality, clean code, and robust role-based access control.
+A professional, streamlined MERN stack e-commerce application designed for academic submission. This project is focused on core functionality, clean code, and robust role-based access control.
 
 ## 🚀 Tech Stack
 
@@ -22,14 +22,6 @@ A professional, streamlined MERN stack e-commerce application designed for acade
 - **Product Management**: Full CRUD (Create, Read, Update, Delete) for the product catalog.
 - **Order Management**: View all customer orders and update status from `Pending` to `Delivered`.
 - **User Management**: View all registered users and assign/revoke `Admin` roles.
-
-## 🛠 Key Improvements Made
-
-Compared to the original repository, the following modifications were implemented to meet academic requirements:
-- **Removed Payment Integration**: Eliminated PayPal/Third-party payment complexities to focus on core logic.
-- **Removed Reviews System**: Stripped out rating/review features for a cleaner, more focused product experience.
-- **Simplified Order Lifecycle**: Condensed the workflow into a direct `Pending` → `Delivered` model.
-- **Standardized RBAC**: Implemented a semantic role system (`buyer` and `admin`) across the entire stack.
 
 ## ⚙️ Setup Instructions
 
@@ -67,7 +59,7 @@ Compared to the original repository, the following modifications were implemente
    npm run client
    ```
 
-## 📂 Folder Structure (Brief)
+## 📂 Folder Structure 
 
 ```text
 ├── backend/           # Express server, models, and routes
@@ -83,10 +75,4 @@ Compared to the original repository, the following modifications were implemente
 └── uploads/           # Product image storage
 ```
 
-## 📸 Screenshots
 
-> [!TIP]
-> Add screenshots of the Home Screen, Product Details, and Admin Dashboard here to demonstrate the clean UI.
-
----
-*Developed for academic submission with a focus on clean architecture and semantic Role-Based Access Control.*
