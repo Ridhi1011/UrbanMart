@@ -15,6 +15,7 @@ const HomeScreen = () => {
   const [category, setCategory] = useState('all');
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
+  console.log('BASE_URL:', process.env.REACT_APP_API_URL);
 
   const { data, isLoading, error } = useGetProductsQuery({
     keyword,
