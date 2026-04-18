@@ -11,9 +11,9 @@ const Meta = ({ title, description, keywords }) => {
 };
 
 Meta.defaultProps = {
-  title: 'Welcome To UrbanMart',
-  description: 'Your premium lifestyle shopping destination',
-  keywords: 'lifestyle, premium goods, shopping',
+  title: 'UrbanMart | Premium Home & Lifestyle',
+  description: 'Discover a curated collection of premium home and lifestyle essentials.',
+  keywords: 'home decor, lifestyle, accessories, premium goods',
 };
 
 export default Meta;
