@@ -14,11 +14,19 @@ table th {
   text-align: center;
 }
 
-.carousel-caption {
-  position: absolute;
-  width: 100%;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+.hero-section {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?q=80&w=2070&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  color: white !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  border: none !important;
+}
+
+.hero-section h1 {
+  color: white !important;
+}
+
+.hero-section .lead {
+  color: #f8f9fa !important;
 }

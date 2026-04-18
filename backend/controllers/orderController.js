@@ -1,7 +1,35 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import Order from '../models/orderModel.js';
 import Product from '../models/productModel.js';
+import User from '../models/userModel.js';
 import { calcPrices } from '../utils/calcPrices.js';
+
+// @desc    Get dashboard stats
+// @route   GET /api/orders/stats
+// @access  Private/Admin
+const getDashboardStats = asyncHandler(async (req, res) => {
+  const ordersCount = await Order.countDocuments();
+  const productsCount = await Product.countDocuments();
+  const usersCount = await User.countDocuments();
+
+  const totalSales = await Order.aggregate([
+    {
+      $group: {
+        _id: null,
+        totalSales: { $sum: '$totalPrice' },
+      },
+    },
+  ]);
+
+  const sales = totalSales.length > 0 ? totalSales[0].totalSales : 0;
+
+  res.json({
+    ordersCount,
+    productsCount,
+    usersCount,
+    totalSales: sales.toFixed(2),
+  });
+});
 // import { verifyPayPalPayment, checkIfNewTransaction } from '../utils/paypal.js';
 
 // @desc    Create new order
@@ -118,4 +146,5 @@ export {
   getOrderById,
   updateOrderStatus,
   getOrders,
+  getDashboardStats,
 };

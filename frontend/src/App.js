@@ -9,8 +9,15 @@ import { logout } from './slices/authSlice';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import { useSelector } from 'react-redux';
+import { useSyncCartMutation } from './slices/cartApiSlice';
+
 const App = () => {
   const dispatch = useDispatch();
+  const { userInfo } = useSelector((state) => state.auth);
+  const { cartItems } = useSelector((state) => state.cart);
+
+  const [syncCart] = useSyncCartMutation();
 
   useEffect(() => {
     const expirationTime = localStorage.getItem('expirationTime');
@@ -22,6 +29,13 @@ const App = () => {
       }
     }
   }, [dispatch]);
+
+  // Sync cart with backend when it changes
+  useEffect(() => {
+    if (userInfo) {
+      syncCart({ cartItems });
+    }
+  }, [cartItems, userInfo, syncCart]);
 
   return (
     <>

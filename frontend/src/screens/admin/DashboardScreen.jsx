@@ -1,62 +1,60 @@
 import React from 'react';
 import { Row, Col, Card } from 'react-bootstrap';
-import { useGetProductsQuery } from '../../slices/productsApiSlice';
-import { useGetOrdersQuery } from '../../slices/ordersApiSlice';
-import { useGetUsersQuery } from '../../slices/usersApiSlice';
+import { useGetDashboardStatsQuery } from '../../slices/ordersApiSlice';
 import Loader from '../../components/Loader';
 import Message from '../../components/Message';
 
 const DashboardScreen = () => {
-  const {
-    data: productData,
-    isLoading: loadingProducts,
-    error: errorProducts,
-  } = useGetProductsQuery({});
-  const {
-    data: orders,
-    isLoading: loadingOrders,
-    error: errorOrders,
-  } = useGetOrdersQuery();
-  const {
-    data: users,
-    isLoading: loadingUsers,
-    error: errorUsers,
-  } = useGetUsersQuery();
+  const { data: stats, isLoading, error } = useGetDashboardStatsQuery();
 
   return (
     <>
-      <h1>Admin Dashboard</h1>
-      {loadingProducts || loadingOrders || loadingUsers ? (
+      <h1 className='mb-4'>Administrative Dashboard</h1>
+      {isLoading ? (
         <Loader />
-      ) : errorProducts || errorOrders || errorUsers ? (
+      ) : error ? (
         <Message variant='danger'>
-          {errorProducts?.data?.message ||
-            errorOrders?.data?.message ||
-            errorUsers?.data?.message}
+          {error?.data?.message || 'Error loading statistics'}
         </Message>
       ) : (
-        <Row className='mt-4'>
-          <Col md={4} className='mb-3'>
-            <Card className='text-center bg-primary text-white p-3'>
-              <Card.Body>
-                <Card.Title>Total Products</Card.Title>
-                <Card.Text as='h2'>{productData.count}</Card.Text>
+        <Row>
+          <Col md={3} className='mb-3'>
+            <Card className='text-center border-0 shadow-sm'>
+              <Card.Body className='p-4'>
+                <Card.Title className='text-muted small text-uppercase'>Total Sales</Card.Title>
+                <Card.Text as='h2' className='text-success fw-bold'>
+                  ₹{stats.totalSales}
+                </Card.Text>
               </Card.Body>
             </Card>
           </Col>
-          <Col md={4} className='mb-3'>
-            <Card className='text-center bg-success text-white p-3'>
-              <Card.Body>
-                <Card.Title>Total Orders</Card.Title>
-                <Card.Text as='h2'>{orders.length}</Card.Text>
+          <Col md={3} className='mb-3'>
+            <Card className='text-center border-0 shadow-sm'>
+              <Card.Body className='p-4'>
+                <Card.Title className='text-muted small text-uppercase'>Total Orders</Card.Title>
+                <Card.Text as='h2' className='text-primary fw-bold'>
+                  {stats.ordersCount}
+                </Card.Text>
               </Card.Body>
             </Card>
           </Col>
-          <Col md={4} className='mb-3'>
-            <Card className='text-center bg-info text-white p-3'>
-              <Card.Body>
-                <Card.Title>Total Users</Card.Title>
-                <Card.Text as='h2'>{users.length}</Card.Text>
+          <Col md={3} className='mb-3'>
+            <Card className='text-center border-0 shadow-sm'>
+              <Card.Body className='p-4'>
+                <Card.Title className='text-muted small text-uppercase'>Total Products</Card.Title>
+                <Card.Text as='h2' className='text-info fw-bold'>
+                  {stats.productsCount}
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col md={3} className='mb-3'>
+            <Card className='text-center border-0 shadow-sm'>
+              <Card.Body className='p-4'>
+                <Card.Title className='text-muted small text-uppercase'>Total Users</Card.Title>
+                <Card.Text as='h2' className='text-dark fw-bold'>
+                  {stats.usersCount}
+                </Card.Text>
               </Card.Body>
             </Card>
           </Col>

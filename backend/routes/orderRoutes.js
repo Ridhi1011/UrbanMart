@@ -6,11 +6,13 @@ import {
   getOrderById,
   updateOrderStatus,
   getOrders,
+  getDashboardStats,
 } from '../controllers/orderController.js';
 import { protect, admin } from '../middleware/authMiddleware.js';
 
 router.route('/').post(protect, addOrderItems).get(protect, admin, getOrders);
 router.route('/mine').get(protect, getMyOrders);
+router.route('/stats').get(protect, admin, getDashboardStats);
 router.route('/:id').get(protect, getOrderById);
 router.route('/:id/status').put(protect, admin, updateOrderStatus);
 

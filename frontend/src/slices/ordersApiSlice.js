@@ -36,7 +36,12 @@ export const orderApiSlice = apiSlice.injectEndpoints({
       }),
       keepUnusedDataFor: 5,
     }),
-
+    getDashboardStats: builder.query({
+      query: () => ({
+        url: `${ORDERS_URL}/stats`,
+      }),
+      keepUnusedDataFor: 5,
+    }),
   }),
 });
 
@@ -46,4 +51,5 @@ export const {
   useUpdateOrderStatusMutation,
   useGetMyOrdersQuery,
   useGetOrdersQuery,
+  useGetDashboardStatsQuery,
 } = orderApiSlice;

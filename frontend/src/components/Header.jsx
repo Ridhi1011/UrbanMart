@@ -5,7 +5,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useLogoutMutation } from '../slices/usersApiSlice';
 import { logout } from '../slices/authSlice';
 import SearchBox from './SearchBox';
-import logo from '../assets/logo.png';
+// Logo import removed for text-based logo
 import { resetCart } from '../slices/cartSlice';
 
 const Header = () => {
@@ -34,9 +34,16 @@ const Header = () => {
     <header>
       <Navbar bg='primary' variant='dark' expand='lg' collapseOnSelect>
         <Container>
-          <Navbar.Brand as={Link} to='/'>
-            <img src={logo} alt='ProShop' />
-            ProShop
+          <Navbar.Brand as={Link} to='/' className='d-flex align-items-center'>
+            <span style={{
+              fontSize: '1.5rem',
+              fontWeight: '800',
+              letterSpacing: '0.5px',
+              textTransform: 'none',
+              fontFamily: '"Outfit", sans-serif'
+            }}>
+              Urban<span style={{ color: '#f39c12' }}>Mart</span>
+            </span>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
