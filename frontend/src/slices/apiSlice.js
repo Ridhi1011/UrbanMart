@@ -10,7 +10,14 @@ import { logout } from './authSlice'; // Import the logout action
 
 const baseQuery = fetchBaseQuery({
   baseUrl: BASE_URL,
-  credentials: 'include',  // ye add karo
+  credentials: 'include',
+  prepareHeaders: (headers, { getState }) => {
+    const token = getState().auth.userInfo?.token;
+    if (token) {
+      headers.set('authorization', `Bearer ${token}`);
+    }
+    return headers;
+  },
 });
 
 async function baseQueryWithAuth(args, api, extra) {
