@@ -1,6 +1,6 @@
-# Mini E-Commerce Application
+# UrbanMart - Mini E-Commerce Application
 
-A professional, streamlined MERN stack e-commerce application designed for academic submission. This project is focused on core functionality, clean code, and robust role-based access control.
+A professional, streamlined MERN stack e-commerce application. This project is focused on core functionality, clean code, and robust role-based access control.
 
 ## 🚀 Tech Stack
 
